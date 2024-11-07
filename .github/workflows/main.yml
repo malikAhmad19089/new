@@ -26,7 +26,7 @@ jobs:
         run: |
           g++ hello.cpp -o hello
           ./hello
-        continue-on-error: true  # This allows the error to show without stopping the process
+       # continue-on-error: true  # This allows the error to show without stopping the process
 
       - name: Display the output (If it fails)
         run: |
