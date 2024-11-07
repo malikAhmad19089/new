@@ -1,0 +1,32 @@
+name: C++ CI Pipeline
+
+on:
+  push:
+    branches:
+      - main   # Ensure this matches your branch name
+  pull_request:
+    branches:
+      - main   # Ensure this matches your branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up GCC (C++ compiler)
+      - name: Set up GCC
+        run: sudo apt-get update && sudo apt-get install g++
+
+      # Step 3: Verify the GCC installation (optional but useful for debugging)
+      - name: Verify GCC version
+        run: g++ --version
+
+      # Step 4: Compile the C++ file
+      - name: Compile the code
+        run: |
+          g++ hello.cpp -o hello
+          ./hello
